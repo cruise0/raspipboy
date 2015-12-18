@@ -44,7 +44,10 @@ class Mode_Map:
     markerSizeBg = 48
     halfMarkerSizeSm = (markerSizeSm / 2)
     halfMarkerSizeBg = (markerSizeBg / 2)
-
+    maxLon = 18.0
+    minLon = 17.0
+    maxLat = 33.0
+    minLat = 29.0
     # Used to implement mouse-acceleration:
     moveStartTick = 0
     lastMoveTick = 0

@@ -22,6 +22,7 @@ class VATS:
     page_canvas = pygame.Surface((config.WIDTH, config.HEIGHT))
     do_init = True
     show_tint = True
+    rootParent = ""
 
     class ThreadClass(threading.Thread):
 
@@ -64,7 +65,7 @@ class VATS:
     def __init__(self, *args, **kwargs):
 
         self.parent = args[0]
-        self.root_parent = self.parent.root_parent
+        rootParent = self.root_parent = self.parent.root_parent
         self.name = "V.A.T.S."
 
         self.header = headFoot.Header(self)
@@ -78,7 +79,7 @@ class VATS:
         self.camthread = camthread
 
         # Generate footers for mode-pages:
-        self.footer_imgs = headFoot.genFooterImgs(["Light", "Contrast", "Exposure", "Mode", "Tinted"])
+        self.footerImgs = headFoot.genFooterImgs(["Light", "Contrast", "Exposure", "Mode", "Tinted"])
 
     def getHeaderText(self):
         '''Generate text for header'''

@@ -73,7 +73,7 @@ class Engine:
             pygame.event.set_allowed(ev)
 
         # Set up gps, clock, tab-list:
-        self.gpsmodule = GpsModuleClass()
+        self.gpsModule = GpsModuleClass()
         self.clock = pygame.time.Clock()
 
         if config.USE_CAMERA:
@@ -203,7 +203,7 @@ class Engine:
         print("END GENERATE")
 
         # Get coordinates:
-        self.gpsmodule.getCoords(cmdline)
+        self.gpsModule.getCoords(cmdline)
 
         # Initial map-downloads:
         cmdline.printText(">MAPS.DOWNLOAD")
@@ -308,7 +308,7 @@ class Engine:
 
         # Don't tint camera-output if VATS mode is set to untinted:
         is_vats = (self.current_tab.name == 'V.A.T.S.')
-        if not is_vats or self.current_tab.showTint:
+        if not is_vats or self.current_tab.show_tint:
 
             # Add scanlines/tint:
             use_frame = 0
