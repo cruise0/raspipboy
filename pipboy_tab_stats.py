@@ -502,7 +502,7 @@ class Tab_Stats:
     # Tab init:
     def __init__(self, *args, **kwargs):
         self.parent = args[0]
-        self.rootParent = self.parent.rootParent
+        self.rootParent = self.parent.root_parent
         self.canvas = pygame.Surface((config.WIDTH, config.HEIGHT))
         self.drawnPageNum = -1
 

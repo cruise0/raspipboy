@@ -14,12 +14,12 @@ import config
 class CmdLineClass:
     def __init__(self, *args, **kwargs):
         self.parent = args[0]
-        self.rootParent = self.parent.rootParent
+        self.rootParent = self.parent.root_parent
 
-        self.canvas = pygame.Surface(self.parent.canvasSize)
+        self.canvas = pygame.Surface(self.parent.canvas_size)
 
         # Use scanlines as base, with tint:
-        self.baseOverlay = self.parent.scanLines.convert()
+        self.baseOverlay = self.parent.scanlines.convert()
         self.baseOverlay.fill(config.TINTCOLOUR, None, pygame.BLEND_RGB_MULT)
         self.cursorRect = [0, 0, config.charWidth, config.charWidth]
         self.cursorYoffset = (config.charHeight - config.charWidth - 4)
@@ -93,7 +93,7 @@ class CmdLineClass:
                     drawImage.blit(self.baseOverlay, (0, 0), None, pygame.BLEND_RGB_MULT)
 
                     # Scale up and display:
-                    drawImage = pygame.transform.scale(drawImage, self.parent.screenSize)
+                    drawImage = pygame.transform.scale(drawImage, self.parent.screen_size)
                     self.parent.screen.blit(drawImage, (0, 0))
 
                     pygame.display.update()
