@@ -47,7 +47,7 @@ class VATS:
                     stream.seek(0)
 
                     # Only process stream if VATS page is visible:
-                    if (self.root_parent.currentTab == self.parent) or (self.parent.page_canvas is None):
+                    if (self.root_parent.current_tab == self.parent) or (self.parent.page_canvas is None):
 
                         page_visible = True
 
