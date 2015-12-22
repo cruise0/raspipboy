@@ -11,3 +11,14 @@ This is the [Pip-Boy 3000 user interface](http://www.youtube.com/watch?v=2iHNDYL
 * V.A.T.S. camera option
 * Wifi-strength meter
 * NOT RADIOACTIVE
+
+## Requirement
+For Enable Camera in V.A.T.S
+
+      sudo apt-get python-Imaging
+
+      pip install picamera
+
+For Enable Map
+
+      Add your google map API key in config.py at gkey = '<your key>'
