@@ -5,13 +5,13 @@
 # Device options
 #  (These will be automatically be set to 'False' if unavailable)
 USE_INTERNET = True     # Download map/place data via internet connection
-USE_GPS = True          # Use GPS module, accessed via GPSD daemon
+USE_GPS = False          # Use GPS module, accessed via GPSD daemon
 USE_SOUND = True        # Play sounds via RasPi's current sound-source
-USE_CAMERA = True       # Use RasPi camera-module as V.A.T.S
-USE_SERIAL = True       # Communicate with custom serial-port controller
+USE_CAMERA = False       # Use RasPi camera-module as V.A.T.S
+USE_SERIAL = False       # Communicate with custom serial-port controller
 
 QUICKLOAD = False       # If true, commandline-startup bits aren't rendered
-FORCE_DOWNLOAD = False  # Don't use cached map-data, if online
+FORCE_DOWNLOAD = True  # Don't use cached map-data, if online
 
 # Render screen-objects at this size - smaller is faster
 WIDTH = 320
@@ -31,7 +31,7 @@ import pygame
 import os
 
 # My Google-API key:
-gKey = '<api-key-here>'
+gKey = 'AlzaSyDYXdl_qffXo2s8YH-13VrXgu8YJynekRS'
 
 
 # Teensy USB serial: symbolic link set up by creating:
@@ -122,7 +122,7 @@ if USE_INTERNET:
     def internet_on():
         try:
             # Can we access this Google address?
-            response = urllib2.urlopen('http://74.125.228.100', timeout=1)
+            response = urllib2.urlopen('http://www.google.com', timeout=1)
             return True
         except urllib2.URLError as err:
             pass

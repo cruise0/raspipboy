@@ -10,13 +10,15 @@ import urllib2
 import StringIO
 import json
 import config
+from gps import * 
 
 if config.USE_GPS:
     # Load libraries used by GPS, if present:
     def loadGPS():
         try:
             global gps
-            import gps
+            #import gps
+	    from gps import *
         except:
             # Deactivate GPS-related systems if load failed:
             print("GPS LIBRARY NOT FOUND!")
@@ -115,23 +117,28 @@ class GpsModuleClass:
                 downloadSound.play(loops=-1)
 
             # Initialise GPS module:
-            session = gps.gps(host="localhost", port="2947")
-            session.stream(gps.WATCH_ENABLE | gps.WATCH_NEWSTYLE)
-
+            #session = gps.gps(host="localhost", port="2947")
+	    session = gps()
+            #session.stream(gps.WATCH_ENABLE | gps.WATCH_NEWSTYLE)
+            session.stream(WATCH_ENABLE|WATCH_NEWSTYLE)
             time.sleep(1)
 
             # Don't use GPS if no devices were found:
-            if len(session.devices) == 0:
-                config.USE_GPS = False
-                print("GPS MODULE NOT FOUND!")
+            #if len(session.devices) == 0:
+            #    config.USE_GPS = False
+            #    print("GPS MODULE NOT FOUND!")
 
             if config.USE_GPS:
                 try:
-                    while (self.lat == 0) and (self.lat == 0):
-                        session.next()
-                        self.lat = session.fix.latitude
-                        self.lon = session.fix.longitude
-                        self.cmdLinePrint(cmdLine, "\t(%s,%s)" % (str(self.lat), str(self.lon)))
+                    while (self.lat == 0) and (self.lon == 0):
+                        report = session.next()
+                        if report.keys()[0] == 'epx':
+                            #self.lat = session.fix.latitude
+                            #self.lon = session.fix.longitude
+                            self.lat = float(report['lat'])
+                            self.lon = float(report['lon'])
+                            self.cmdLinePrint(cmdLine, "\t(%s,%s)" % (str(self.lat), str(self.lon)))
+                            time.sleep(1)
                 except StopIteration:
                     self.cmdLinePrint(cmdLine, "GPSD has terminated")
                     config.USE_GPS = False
