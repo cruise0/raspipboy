@@ -30,8 +30,8 @@ FPS = 15
 import pygame
 import os
 
-# My Google-API key:
-gKey = 'AlzaSyDYXdl_qffXo2s8YH-13VrXgu8YJynekRS'
+# Your Google-API key:
+gKey = '<your google api key>'
 
 
 # Teensy USB serial: symbolic link set up by creating:
