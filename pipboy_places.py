@@ -120,7 +120,7 @@ def getPlaces(lat, lon, radius=2000, types='establishment'):
     # These search-arguments will show the initial results-page:
     pageArgs = "location=%s,%s&radius=%s&types=%s" % (lat, lon, radius, types)
     pageNum = 0
-    while not pageArgs:
+    while pageArgs:
         url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?%s&sensor=false&key=%s" % (pageArgs, config.gKey)
         pageArgs = None
 
